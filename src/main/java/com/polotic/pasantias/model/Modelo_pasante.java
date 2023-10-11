@@ -53,4 +53,6 @@ public class Modelo_pasante {
 
     @OneToMany(mappedBy = "unModelo_pasante")
     private List<Persona> listaPersonas;
+    
+    //roma
 }
