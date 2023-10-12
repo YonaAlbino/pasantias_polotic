@@ -12,6 +12,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToOne;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -21,6 +22,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
+@Builder
 public class Persona {
 
     @Id
@@ -33,7 +35,7 @@ public class Persona {
     private String cuil;
     private String cv;
     private String direccion;
-    private int edad;
+    private String edad;
 
     @ManyToOne
     @JoinColumn(name = "id_reunion")

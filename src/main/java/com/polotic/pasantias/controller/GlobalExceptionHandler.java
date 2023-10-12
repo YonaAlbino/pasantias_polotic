@@ -10,7 +10,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
-import org.springframework.web.client.HttpClientErrorException;
 
 @RestControllerAdvice
 public class GlobalExceptionHandler {
@@ -23,17 +22,6 @@ public class GlobalExceptionHandler {
                 .status(HttpStatus.INTERNAL_SERVER_ERROR)
                 .build();
         return new ResponseEntity<>(error, HttpStatus.INTERNAL_SERVER_ERROR);
-
-    }
-
-    @ExceptionHandler(HttpClientErrorException.NotFound.class)
-    public ResponseEntity<ErrorResponse> manejadorNotFoundException(Exception ex) {
-
-        ErrorResponse error = ErrorResponse.builder()
-                .mensaje(ex.getMessage())
-                .status(HttpStatus.INTERNAL_SERVER_ERROR)
-                .build();
-        return new ResponseEntity<>(error, HttpStatus.NOT_FOUND);
 
     }
 
