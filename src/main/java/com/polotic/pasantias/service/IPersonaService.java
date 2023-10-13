@@ -11,7 +11,6 @@ import com.polotic.pasantias.model.Persona;
 import com.polotic.pasantias.model.Provincia;
 import com.polotic.pasantias.model.Reunion;
 import java.util.List;
-import org.springframework.web.bind.annotation.RequestParam;
 
 /**
  *
@@ -30,5 +29,8 @@ public interface IPersonaService {
 
     public Persona findPersona(Long id);
 
-    public void editPersona(Persona persona);
+    public void editPersona(Long id_persona, String nombre, String apellido, int dni, String cuil,
+            String cv, String direccion, String edad,
+            Reunion reunion, Modelo_pasante unModelo_pasante, Provincia unaProvincia,
+            Localidad unaLolidad, Lugar_realizacion id_tipo_persona);
 }

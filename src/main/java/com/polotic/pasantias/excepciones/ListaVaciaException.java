@@ -8,10 +8,12 @@ package com.polotic.pasantias.excepciones;
  *
  * @author yonat
  */
-public class RecursoNoEncontradoException extends RuntimeException {
+public class ListaVaciaException extends RuntimeException{
 
-    public RecursoNoEncontradoException(String mensaje) {
-        super(mensaje);
+    public ListaVaciaException(String message) {
+        super(message);
     }
-
+    
+    
+    
 }

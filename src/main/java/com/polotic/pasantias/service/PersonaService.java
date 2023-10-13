@@ -14,36 +14,31 @@ import com.polotic.pasantias.repository.IPersonaRepository;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestParam;
 
 @Service
 public class PersonaService implements IPersonaService {
-
+    
     @Autowired
     private IPersonaRepository personaRepo;
-
+    
     @Override
     public List<Persona> getPersonas() {
         List<Persona> listaPersonas = personaRepo.findAll();
         return listaPersonas;
     }
-
+    
     @Override
     public Persona findPersona(Long id) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        Persona persona = personaRepo.findById(id).orElse(null);
+        return persona;
     }
-
-    @Override
-    public void editPersona(Persona persona) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
+    
     @Override
     public void savePersona(String nombre, String apellido, int dni, String cuil,
             String cv, String direccion, String edad,
             Reunion reunion, Modelo_pasante unModelo_pasante, Provincia unaProvincia,
             Localidad unaLolidad, Lugar_realizacion id_tipo_persona) {
-
+        
         Persona persona = Persona.builder()
                 .nombre(nombre)
                 .apellido(apellido)
@@ -58,14 +53,41 @@ public class PersonaService implements IPersonaService {
                 .unaLolidad(unaLolidad)
                 .unaProvincia(unaProvincia)
                 .build();
-
+        
         personaRepo.save(persona);
-
+        
     }
-
+    
+    public void savePersona(Persona persona) {
+        personaRepo.save(persona);
+    }
+    
     @Override
     public void deletePersona(Long id) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        personaRepo.deleteById(id);
     }
-
+    
+    @Override
+    public void editPersona(Long id_persona, String nombre, String apellido, int dni, String cuil, String cv, String direccion, String edad, Reunion reunion,
+            Modelo_pasante unModelo_pasante, Provincia unaProvincia, Localidad unaLolidad, Lugar_realizacion id_tipo_persona) {
+        
+        Persona persona = this.findPersona(id_persona);
+        
+        persona.setApellido(apellido);
+        persona.setCuil(cuil);
+        persona.setCv(cv);
+        persona.setDireccion(direccion);
+        persona.setDni(dni);
+        persona.setEdad(edad);
+        persona.setId_persona(id_persona);
+        persona.setId_tipo_persona(id_tipo_persona);
+        persona.setNombre(nombre);
+        persona.setReunion(reunion);
+        persona.setUnModelo_pasante(unModelo_pasante);
+        persona.setUnaLolidad(unaLolidad);
+        persona.setApellido(apellido);
+        
+        this.savePersona(persona);
+    }
+    
 }

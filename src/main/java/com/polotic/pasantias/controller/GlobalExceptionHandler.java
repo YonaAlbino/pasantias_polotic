@@ -4,7 +4,8 @@
  */
 package com.polotic.pasantias.controller;
 
-import com.polotic.pasantias.excepciones.RecursoNoEncontradoException;
+import com.polotic.pasantias.excepciones.ListaVaciaException;
+import com.polotic.pasantias.excepciones.RegistroNullException;
 import com.polotic.pasantias.model.ErrorResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,16 +23,25 @@ public class GlobalExceptionHandler {
                 .status(HttpStatus.INTERNAL_SERVER_ERROR)
                 .build();
         return new ResponseEntity<>(error, HttpStatus.INTERNAL_SERVER_ERROR);
-
     }
 
-    @ExceptionHandler(RecursoNoEncontradoException.class)
-    public ResponseEntity<ErrorResponse> manejadorRecursoNoEncontrado(RecursoNoEncontradoException ex) {
+    @ExceptionHandler(ListaVaciaException.class)
+    public ResponseEntity<ErrorResponse> listaVaciaException(ListaVaciaException ex) {
 
         ErrorResponse error = ErrorResponse.builder()
                 .mensaje(ex.getMessage())
                 .status(HttpStatus.NOT_FOUND)
                 .build();
-        return new ResponseEntity<>(error, error.getStatus());
+        return new ResponseEntity<>(error, HttpStatus.NOT_FOUND);
+    }
+
+    @ExceptionHandler(RegistroNullException.class)
+    public ResponseEntity<ErrorResponse> registroNullException(RegistroNullException ex) {
+
+        ErrorResponse error = ErrorResponse.builder()
+                .mensaje(ex.getMessage())
+                .status(HttpStatus.NOT_FOUND)
+                .build();
+        return new ResponseEntity<>(error, HttpStatus.NOT_FOUND);
     }
 }
