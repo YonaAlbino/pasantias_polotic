@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -33,26 +34,14 @@ public class PersonaController {
     private PersonaService persoServi;
 
     @PostMapping("/crear")
-    public ResponseEntity<String> savePersona(@RequestParam String nombre, @RequestParam String apellido, @RequestParam int dni, @RequestParam String cuil,
-            @RequestParam String cv, @RequestParam String direccion, @RequestParam String edad,
-            @RequestParam(required = false) Reunion reunion, @RequestParam(required = false) Modelo_pasante unModelo_pasante,
-            @RequestParam(required = false) Provincia unaProvincia, @RequestParam(required = false) Localidad unaLolidad,
-            @RequestParam(required = false) Lugar_realizacion id_tipo_persona) {
-
-        persoServi.savePersona(nombre, apellido, dni, cuil, cv, direccion, edad, reunion, unModelo_pasante, unaProvincia, unaLolidad, id_tipo_persona);
-
+    public ResponseEntity<String> savePersona(@RequestBody Persona persona) {
+        persoServi.savePersona(persona);
         return new ResponseEntity<>("La persona fue creada exitosamente", HttpStatus.CREATED);
     }
 
-    @PutMapping("actualizar")
-    public ResponseEntity<String> editPersona(@RequestParam Long id, @RequestParam String nombre, @RequestParam String apellido, @RequestParam int dni, @RequestParam String cuil,
-            @RequestParam String cv, @RequestParam String direccion, @RequestParam String edad,
-            @RequestParam(required = false) Reunion reunion, @RequestParam(required = false) Modelo_pasante unModelo_pasante,
-            @RequestParam(required = false) Provincia unaProvincia, @RequestParam(required = false) Localidad unaLolidad,
-            @RequestParam(required = false) Lugar_realizacion id_tipo_persona) {
-
-        persoServi.editPersona(id, nombre, apellido, dni, cuil, cv, direccion, edad, reunion, unModelo_pasante, unaProvincia, unaLolidad, id_tipo_persona);
-
+    @PutMapping("/modificar")
+    public ResponseEntity<String> editPersona(@RequestBody Persona persona) {
+        persoServi.editPersona(persona);
         return new ResponseEntity<>("La persona fue modificada exitosamente", HttpStatus.OK);
     }
 
@@ -65,17 +54,11 @@ public class PersonaController {
     @GetMapping("/traer/todas")
     public ResponseEntity<List<Persona>> getPersonas() {
         List<Persona> listaPersonas = persoServi.getPersonas();
-
-        if (!listaPersonas.isEmpty()) {
-            return new ResponseEntity<>(listaPersonas, HttpStatus.OK);
-        } else {
-            throw new ListaVaciaException("La lista de personas esta vacia");
-        }
+        return new ResponseEntity<>(listaPersonas, HttpStatus.OK);
     }
 
-    @GetMapping("/buscar/persona")
+    @GetMapping("/buscar")
     public ResponseEntity<Persona> findPersona(@RequestParam Long id) {
-
         Persona persona = persoServi.findPersona(id);
 
         if (persona != null) {
@@ -83,7 +66,6 @@ public class PersonaController {
         } else {
             throw new RegistroNullException("La persona no existe en la base de datos");
         }
-
     }
 
 }

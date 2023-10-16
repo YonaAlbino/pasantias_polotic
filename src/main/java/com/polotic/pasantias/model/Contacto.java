@@ -9,6 +9,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -18,13 +19,14 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
+@Builder
 public class Contacto {
     
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id_contacto;
      
-     private String main;
+     private String mail;
      private String numero_telefono;
     
 }

@@ -20,17 +20,11 @@ public interface IPersonaService {
 
     public List<Persona> getPersonas();
 
-    public void savePersona(String nombre, String apellido, int dni, String cuil,
-            String cv, String direccion, String edad,
-            Reunion reunion, Modelo_pasante unModelo_pasante, Provincia unaProvincia,
-            Localidad unaLolidad, Lugar_realizacion id_tipo_persona);
+    public void savePersona(Persona persona);
 
     public void deletePersona(Long id);
 
     public Persona findPersona(Long id);
 
-    public void editPersona(Long id_persona, String nombre, String apellido, int dni, String cuil,
-            String cv, String direccion, String edad,
-            Reunion reunion, Modelo_pasante unModelo_pasante, Provincia unaProvincia,
-            Localidad unaLolidad, Lugar_realizacion id_tipo_persona);
+    public void editPersona(Persona persona);
 }

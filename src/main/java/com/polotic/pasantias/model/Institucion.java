@@ -15,6 +15,7 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToOne;
 import java.util.List;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -25,6 +26,7 @@ import org.hibernate.annotations.ManyToAny;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
+@Builder
 public class Institucion {
 
     @Id
@@ -40,13 +42,14 @@ public class Institucion {
             inverseJoinColumns = @JoinColumn(name = "FK_NIVEL", nullable = false)
     )
     private List<Nivel> listaNiveles;
-    
+
     @OneToOne
     @JoinColumn(name = "id_contacto",
             referencedColumnName = "id_contacto")
     private Contacto unContacto;
-    
+
     @ManyToOne
     @JoinColumn(name = "id_localidad")
     private Localidad unaLocalidad;
+
 }

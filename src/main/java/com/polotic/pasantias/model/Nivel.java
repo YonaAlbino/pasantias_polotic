@@ -11,6 +11,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.ManyToMany;
 import java.util.List;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -20,15 +21,19 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
+@Builder
 public class Nivel {
     
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id_nivel;
     
-    private String nivel;
+    private String nombre;
     
     @ManyToMany(mappedBy = "listaNiveles")
     private List<Institucion> listaInstituciones;
+
+   
+    
     
 }
