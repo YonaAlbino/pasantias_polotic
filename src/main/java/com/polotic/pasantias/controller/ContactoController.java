@@ -6,6 +6,7 @@ package com.polotic.pasantias.controller;
 
 import com.polotic.pasantias.model.Contacto;
 import com.polotic.pasantias.service.ContactoService;
+import com.polotic.pasantias.service.IContactoService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -24,7 +25,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class ContactoController {
 
     @Autowired
-    private ContactoService contactoService;
+    private IContactoService contactoService;
 
     @GetMapping("/traer/todos")
     public ResponseEntity<List<Contacto>> getContactos() {

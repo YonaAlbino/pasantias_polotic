@@ -8,6 +8,7 @@ import com.polotic.pasantias.excepciones.ListaVaciaException;
 import com.polotic.pasantias.model.Area;
 import com.polotic.pasantias.model.Persona;
 import com.polotic.pasantias.service.AreaService;
+import com.polotic.pasantias.service.IAreaService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -26,7 +27,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class AreaController {
 
     @Autowired
-    private AreaService areaService;
+    private IAreaService areaService;
 
     @PostMapping("/crear")
     public ResponseEntity<String> saveArea(@RequestBody Area area) {

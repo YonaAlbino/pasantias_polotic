@@ -6,6 +6,7 @@ package com.polotic.pasantias.controller;
 
 import com.polotic.pasantias.model.Institucion;
 import com.polotic.pasantias.model.Nivel;
+import com.polotic.pasantias.service.INivelService;
 import com.polotic.pasantias.service.NivelService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +26,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class NivelController {
 
     @Autowired
-    private NivelService nivelSerivice;
+    private INivelService nivelSerivice;
 
     @PostMapping("/crear")
     public ResponseEntity<Nivel> saveNivel(@RequestBody Nivel nivel) {

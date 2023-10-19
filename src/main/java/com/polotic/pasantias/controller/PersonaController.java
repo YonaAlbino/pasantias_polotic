@@ -12,6 +12,7 @@ import com.polotic.pasantias.model.Modelo_pasante;
 import com.polotic.pasantias.model.Persona;
 import com.polotic.pasantias.model.Provincia;
 import com.polotic.pasantias.model.Reunion;
+import com.polotic.pasantias.service.IPersonaService;
 import com.polotic.pasantias.service.PersonaService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,7 +32,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class PersonaController {
 
     @Autowired
-    private PersonaService persoServi;
+    private IPersonaService persoServi;
 
     @PostMapping("/crear")
     public ResponseEntity<String> savePersona(@RequestBody Persona persona) {
@@ -60,12 +61,6 @@ public class PersonaController {
     @GetMapping("/buscar")
     public ResponseEntity<Persona> findPersona(@RequestParam Long id) {
         Persona persona = persoServi.findPersona(id);
-
-        if (persona != null) {
-            return new ResponseEntity<>(persona, HttpStatus.FOUND);
-        } else {
-            throw new RegistroNullException("La persona no existe en la base de datos");
-        }
+        return new ResponseEntity<>(persona, HttpStatus.FOUND);
     }
-
 }

@@ -19,25 +19,27 @@ public class LocalidadService implements ILocalidadService {
 
     @Override
     public void saveLocalidad(Localidad localidad) {
-       localidadRepo.save(localidad);
+        localidadRepo.save(localidad);
     }
 
     @Override
     public List<Localidad> getLocalidades() {
         List<Localidad> listaLocalidades = localidadRepo.findAll();
-        if(listaLocalidades.isEmpty())
-                throw new RegistroNullException("La lista de localidades se encuentra vacia");
-        else 
+        if (listaLocalidades.isEmpty()) {
+            throw new RegistroNullException("La lista de localidades se encuentra vacia");
+        } else {
             return listaLocalidades;
+        }
     }
 
     @Override
     public Localidad findLocalidad(Long id) {
         Localidad localidad = localidadRepo.findById(id).orElse(null);
-        if(localidad != null)
+        if (localidad != null) {
             return localidad;
-        else
+        } else {
             throw new RegistroNullException("La localidad que estas buscando no existe en la base de datos");
+        }
     }
 
     @Override
@@ -50,5 +52,4 @@ public class LocalidadService implements ILocalidadService {
         localidadRepo.deleteById(id);
     }
 
- 
 }
