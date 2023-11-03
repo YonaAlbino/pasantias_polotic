@@ -6,8 +6,6 @@ package com.polotic.pasantias.controller;
 
 import com.polotic.pasantias.excepciones.ListaVaciaException;
 import com.polotic.pasantias.model.Area;
-import com.polotic.pasantias.model.Persona;
-import com.polotic.pasantias.service.AreaService;
 import com.polotic.pasantias.service.IAreaService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;

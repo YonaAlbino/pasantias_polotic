@@ -5,7 +5,6 @@
 package com.polotic.pasantias.controller;
 
 import com.polotic.pasantias.model.Contacto;
-import com.polotic.pasantias.service.ContactoService;
 import com.polotic.pasantias.service.IContactoService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;

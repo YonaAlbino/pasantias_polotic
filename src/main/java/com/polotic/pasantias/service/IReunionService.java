@@ -4,23 +4,23 @@
  */
 package com.polotic.pasantias.service;
 
-
-import com.polotic.pasantias.model.Persona;
+import com.polotic.pasantias.model.Reunion;
 import java.util.List;
 
 /**
  *
  * @author yonat
  */
-public interface IPersonaService {
+public interface IReunionService {
 
-    public List<Persona> getPersonas();
+    public List<Reunion> getReuniones();
 
-    public void savePersona(Persona persona);
+    public void saveReunion(Reunion reunion);
 
-    public void deletePersona(Long id);
+    public void deleteReunion(Long id);
 
-    public Persona findPersona(Long id);
+    public Reunion findReunion(Long id);
 
-    public void editPersona(Persona persona);
+    public void editReunion(Reunion reunion);
+
 }

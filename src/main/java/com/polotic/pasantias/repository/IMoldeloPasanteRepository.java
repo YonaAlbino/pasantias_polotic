@@ -9,6 +9,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface IMoldeloPasante extends JpaRepository<Modelo_pasante, Long>{
+public interface IMoldeloPasanteRepository extends JpaRepository<Modelo_pasante, Long>{
     
 }

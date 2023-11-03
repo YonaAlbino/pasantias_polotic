@@ -6,7 +6,6 @@ package com.polotic.pasantias.controller;
 
 import com.polotic.pasantias.model.Localidad;
 import com.polotic.pasantias.service.ILocalidadService;
-import com.polotic.pasantias.service.LocalidadService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

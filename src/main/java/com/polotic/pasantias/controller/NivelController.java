@@ -4,10 +4,9 @@
  */
 package com.polotic.pasantias.controller;
 
-import com.polotic.pasantias.model.Institucion;
+
 import com.polotic.pasantias.model.Nivel;
 import com.polotic.pasantias.service.INivelService;
-import com.polotic.pasantias.service.NivelService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

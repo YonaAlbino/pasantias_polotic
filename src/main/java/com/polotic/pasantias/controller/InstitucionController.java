@@ -7,7 +7,6 @@ package com.polotic.pasantias.controller;
 
 import com.polotic.pasantias.model.Institucion;
 import com.polotic.pasantias.service.IIinstitucionService;
-import com.polotic.pasantias.service.InstitucionService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

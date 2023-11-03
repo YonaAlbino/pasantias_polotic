@@ -4,16 +4,9 @@
  */
 package com.polotic.pasantias.controller;
 
-import com.polotic.pasantias.excepciones.ListaVaciaException;
-import com.polotic.pasantias.excepciones.RegistroNullException;
-import com.polotic.pasantias.model.Localidad;
-import com.polotic.pasantias.model.Lugar_realizacion;
-import com.polotic.pasantias.model.Modelo_pasante;
+
 import com.polotic.pasantias.model.Persona;
-import com.polotic.pasantias.model.Provincia;
-import com.polotic.pasantias.model.Reunion;
 import com.polotic.pasantias.service.IPersonaService;
-import com.polotic.pasantias.service.PersonaService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
